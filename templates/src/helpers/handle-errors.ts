@@ -1,5 +1,5 @@
+import { ErrorResponse } from '@/interface/errors';
 import { env } from '@config';
-import { ErrorResponse } from '@interface/errors';
 import { AppError } from '@utils';
 import mongoose from 'mongoose';
 import { ZodError } from 'zod';

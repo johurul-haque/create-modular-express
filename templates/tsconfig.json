@@ -5,14 +5,12 @@
     "rootDir": "src",
     "baseUrl": "src",
     "paths": {
-      "@utils": ["utils"],
-      "@middlewares": ["middlewares"],
+      "@/*": ["./*"],
       "@config": ["config"],
-      "@interface/*": ["interface/*"],
+      "@utils": ["utils"],
+      "@middlewares/*": ["middlewares/*"],
       "@helpers/*": ["helpers/*"],
-      "@modules/*": ["modules/*"],
-      "@routes/*": ["routes/*"],
-      "@/*": ["/*"]
+      "@modules/*": ["modules/*"]
     },
     "outDir": "dist",
     "esModuleInterop": true,
