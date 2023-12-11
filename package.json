@@ -1,0 +1,16 @@
+{
+  "name": "create-modular-express",
+  "version": "1.0.0",
+  "description": "Scaffolding tool for creating Modular Express app",
+  "scripts": {
+    "create-modular-express": "node index.js"
+  },
+  "bin": {
+    "create-modular-express": "./index.js"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  },
+  "author": "Johurul Haque",
+  "license": "MIT"
+}
