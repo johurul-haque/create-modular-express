@@ -59,7 +59,7 @@ async function createFooApp(destination) {
   }
 
   // Copy template files
-  await fs.copy(`${__dirname}/templates`, destination, {
+  await fs.copy(`${__dirname}/template`, destination, {
     filter: (src, dest) => {
       // Exclude node_modules, dist and .vercel folders
       return (
