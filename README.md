@@ -3,7 +3,7 @@ create-modular-express
 </h1>
 
 <p align="center">
-Lightweight bootstraper for setting up express application with typescript.
+Lightweight bootstraper for starting up express application with typescript.
 </p>
 
 ## Getting started
