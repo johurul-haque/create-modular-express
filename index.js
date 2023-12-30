@@ -29,7 +29,12 @@ async function runCli(destination) {
   try {
     if (destination === '.') {
       destination = process.cwd();
-    } else if (!destination) {
+    } else if (destination) {
+      commands = `
+  cd ${destination} 
+  npm install
+      `;
+    } else {
       const projectName = await promptUser();
 
       destination = projectName || process.cwd();
