@@ -1,6 +1,6 @@
 {
   "name": "create-modular-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight scaffolder for starting up Express application with TypeScript",
   "type": "module",
   "bin": {
