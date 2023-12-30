@@ -49,8 +49,6 @@ export function globalCatch(
   } else if (error instanceof Error) {
     const serverError = handle.serverError(error);
 
-    console.log(error.stack);
-
     errorResponse = {
       ...errorResponse,
       ...serverError,
