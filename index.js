@@ -44,14 +44,9 @@ async function runCli(destination) {
 
     await fs.copy(`${__dirname}/template`, destination, {
       filter: (src) => {
-        const exclusions = ['node_modules', 'dist', '.vercel', '.env'];
-        const fileName = path.basename(src);
+        const exclusions = ['node_modules', 'dist', '.vercel'];
 
-        // Exclude .env file but include .env.example
-        return (
-          fileName !== '.env' &&
-          !exclusions.some((exclusion) => src.includes(exclusion))
-        );
+        return !exclusions.some((exclusion) => src.includes(exclusion));
       },
     });
 
