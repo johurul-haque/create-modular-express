@@ -1,30 +1,50 @@
-# create-modular-express
-Cheeky name, I know. A scaffolding tool for creating REST APIs using Express and TypeScript. It adheres the modular pattern for structuring the application.
+<h1 align="center">
+create-modular-express
+</h1>
 
-## Installation
+<p align="center">
+Lightweight bootstraper for setting up express application with typescript.
+</p>
 
-Install the package globally
+## Getting started
 
 ```bash
-$ npm install -g create-modular-express
+npx create-modular-express
+```
+Optionally, you can add a period `.` at the end to use the current directory to scaffold the project.
+
+### Scripts
+After installing all of the dependencies change the `.env.example` file `.env` and add the necessary variables.
+
+Now you can use the following commands to spin up your app
+> ⚠️ Only use npm for this
+
+```bash
+# dev server
+npm run dev
+
+# production build
+npm run build
+
+# running in production
+npm start
 ```
 
-Or run the executable directly
-```bash
-$ npx create-modular-express <opt>
-```
+## Tech stack
+- **Express.js** - Route handling and middlewares
+- **TypeScript** - Static type checking
+- **Zod** - Validating and parsing incoming data and inferring types
+- **Mongoose** - Data modeling and query building
+- **MongoDB** - Storing and managing data
 
-## App structure
-```bash
-├── src
-│   ├── main.ts # entry point for the application.
-│   └── app.ts # default exports the `app` from express for routing.  
-├── config
-│   └── index.ts # Exports sanitized, immutable environment objects
-├── modules
-├── .env
-├── .gitignore
-├── package.json
-├── vercel.json
-└── tsconfig.json
-```
+## Features overview
+- **Modular pattern** - The application adheres the modular pattern. With each module having six necessary files. Use [this tool](https://www.npmjs.com/package/write-module) for quickly creating those files.
+  
+- **Aliases** - Configured with import aliases `(@/*)` while making sure the absolute paths gets resolved to relative paths during build time.
+  
+- **AppError** - Extended class of the `Error` constructor for adding the status code parameter.
+- **Catch Async** - An utility function that wraps asynchronous route handlers. Ensuring proper error handling by forwarding any errors to the Express error-handling middleware.
+- **Validate Request** - Validates incoming requests against a specified Zod schema for request bodies. If the validation succeeds, it allows the request to proceed; otherwise, it handles errors asynchronously.
+- **Global Catch** - Error handling middleware which catches all possible errors and sends a response with a standard format.
+- **Deployment** - Comes with vercel configuration to just easily deploy on vercel using the CLI.
+- **Most importantly** - Just delete what you don't need 🕶️
