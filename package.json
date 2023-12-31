@@ -1,7 +1,7 @@
 {
   "name": "create-modular-express",
   "version": "1.0.4",
-  "description": "Lightweight scaffolder for starting up Express application with TypeScript",
+  "description": "Lightweight project scaffolder for starting up an Express application with TypeScript",
   "type": "module",
   "bin": {
     "create-modular-express": "./index.js"
@@ -12,6 +12,17 @@
     "inquirer": "^9.2.12",
     "nanospinner": "^1.1.0"
   },
+  "repository": {
+    "url": "https://github.com/johurul-haque/create-modular-express"
+  },
   "author": "Johurul Haque",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "scaffolder",
+    "express",
+    "typescript",
+    "mongodb",
+    "mongoose",
+    "zod"
+  ]
 }
