@@ -47,7 +47,7 @@ async function runCli(destination) {
 
     spinner.start({ color: 'blue' });
 
-    await fs.copy(`${__dirname}/template`, destination, {
+    await fs.copy(path.join(__dirname, 'template'), destination, {
       filter: (src) => {
         const exclusions = ['node_modules', 'dist', '.vercel'];
 
@@ -56,13 +56,11 @@ async function runCli(destination) {
     });
 
     const projectName = path.basename(destination);
-
     const packageJsonPath = `${destination}/package.json`;
-
     let packageJson = await fs.readFile(packageJsonPath, 'utf-8');
 
     packageJson = packageJson.replace(
-      `"name": "modular-express-app"`,
+      `"name": "create-modular-express"`,
       `"name": "${projectName}"`
     );
 
@@ -81,4 +79,4 @@ async function runCli(destination) {
   }
 }
 
-await runCli(process.argv[2]);
+runCli(process.argv[2]);
