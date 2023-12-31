@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
-import fs from 'fs-extra';
+import fsExtra from 'fs-extra';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { copyTemplate } from './copy-template.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -47,24 +48,18 @@ async function runCli(destination) {
 
     spinner.start({ color: 'blue' });
 
-    await fs.copy(path.join(__dirname, 'template'), destination, {
-      filter: (src) => {
-        const exclusions = ['node_modules', 'dist', '.vercel'];
+    copyTemplate(destination);
 
-        return !exclusions.some((exclusion) => src.includes(exclusion));
-      },
-    });
+    const projectName = path.basename(destination);
+    const packageJsonPath = `${destination}/package.json`;
+    let packageJson = await fsExtra.readFile(packageJsonPath, 'utf-8');
 
-    // const projectName = path.basename(destination);
-    // const packageJsonPath = `${destination}/package.json`;
-    // let packageJson = await fs.readFile(packageJsonPath, 'utf-8');
+    packageJson = packageJson.replace(
+      `"name": "create-modular-express"`,
+      `"name": "${projectName}"`
+    );
 
-    // packageJson = packageJson.replace(
-    //   `"name": "create-modular-express"`,
-    //   `"name": "${projectName}"`
-    // );
-
-    // await fs.writeFile(packageJsonPath, packageJson, 'utf-8');
+    await fsExtra.writeFile(packageJsonPath, packageJson, 'utf-8');
 
     spinner.success({ text: 'Success!' });
 
