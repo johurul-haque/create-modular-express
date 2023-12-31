@@ -55,16 +55,16 @@ async function runCli(destination) {
       },
     });
 
-    const projectName = path.basename(destination);
-    const packageJsonPath = `${destination}/package.json`;
-    let packageJson = await fs.readFile(packageJsonPath, 'utf-8');
+    // const projectName = path.basename(destination);
+    // const packageJsonPath = `${destination}/package.json`;
+    // let packageJson = await fs.readFile(packageJsonPath, 'utf-8');
 
-    packageJson = packageJson.replace(
-      `"name": "create-modular-express"`,
-      `"name": "${projectName}"`
-    );
+    // packageJson = packageJson.replace(
+    //   `"name": "create-modular-express"`,
+    //   `"name": "${projectName}"`
+    // );
 
-    await fs.writeFile(packageJsonPath, packageJson, 'utf-8');
+    // await fs.writeFile(packageJsonPath, packageJson, 'utf-8');
 
     spinner.success({ text: 'Success!' });
 
