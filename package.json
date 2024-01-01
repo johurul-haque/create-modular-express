@@ -3,9 +3,7 @@
   "version": "1.0.9",
   "description": "Lightweight project scaffolder for starting up an Express application with TypeScript",
   "type": "module",
-  "bin": {
-    "create-modular-express": "./index.js"
-  },
+  "bin": "./index.js",
   "dependencies": {
     "chalk": "^5.3.0",
     "fs-extra": "^10.0.0",

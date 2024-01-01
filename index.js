@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
-import fsExtra from 'fs-extra';
+import fs from 'fs-extra';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { copyTemplate } from './copy-template.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+/**
+ * @returns {Promise<string | undefined>}
+ */
 async function promptUser() {
   const answer = await inquirer.prompt({
     name: 'project_name',
@@ -20,6 +22,9 @@ async function promptUser() {
   return answer.project_name;
 }
 
+/**
+ * @param {string} destination
+ */
 async function runCli(destination) {
   const spinner = createSpinner('scaffolding...');
 
@@ -35,31 +40,35 @@ async function runCli(destination) {
   cd ${destination} 
   npm install
       `;
+
+      fs.mkdirSync(destination);
     } else {
       const projectName = await promptUser();
 
       destination = projectName || process.cwd();
 
       commands = `
-  cd ${destination} 
+  cd ${path.basename(destination)} 
   npm install
       `;
+
+      projectName && fs.mkdirSync(destination);
     }
 
     spinner.start({ color: 'blue' });
 
-    copyTemplate(destination);
+    await fs.copy(path.join(__dirname, 'template'), destination);
 
     const projectName = path.basename(destination);
-    const packageJsonPath = `${destination}/package.json`;
-    let packageJson = await fsExtra.readFile(packageJsonPath, 'utf-8');
+    const packageJsonPath = path.join(destination, 'package.json');
+    let packageJson = await fs.readFile(packageJsonPath, 'utf-8');
 
     packageJson = packageJson.replace(
       `"name": "create-modular-express"`,
       `"name": "${projectName}"`
     );
 
-    await fsExtra.writeFile(packageJsonPath, packageJson, 'utf-8');
+    await fs.writeFile(packageJsonPath, packageJson, 'utf-8');
 
     spinner.success({ text: 'Success!' });
 
