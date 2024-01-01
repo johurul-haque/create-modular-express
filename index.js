@@ -78,7 +78,6 @@ async function runCli(destination) {
     `);
   } catch (error) {
     spinner.error({ text: 'ERROR: Something went wrong!' });
-    console.log(error);
     process.exit(1);
   }
 }
