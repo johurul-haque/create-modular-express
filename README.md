@@ -33,7 +33,7 @@ npm start
 - **MongoDB** - Storing and managing data
 
 ## Features Overview
-- **Modular pattern** - The application adheres to the modular pattern. With each module having six necessary files. Use [this tool](https://www.npmjs.com/package/write-module) to quickly create those files.
+- **Modular pattern** - The application adheres to the modular pattern. With each module having six necessary files. Use [this tool](https://www.npmjs.com/package/write-module) to quickly generate those files.
   
 - **import alias** - Comes pre-configured with `(@/*)`. Also ensures the absolute paths get resolved to relative paths during build time.
 - **AppError** - Extended class of the `Error` instance for adding an extra status code parameter.
