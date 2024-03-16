@@ -1,5 +1,5 @@
 # create-modular-express
-Lightweight project bootstraper for starting up an express application with typescript.
+Scaffolder tool containing starter code for express configured with typescript, mongoose and zod.
 
 ## Getting started
 
@@ -12,13 +12,12 @@ Optionally, you can add a period `.` at the end to use the current directory to 
 After installing all of the dependencies change the `.env.example` file `.env` and add the necessary variables.
 
 Now you can use the following commands to spin up your app
-> ⚠️ Only use npm for this
 
 ```bash
 # dev server
 npm run dev
 
-# production build
+# production build. ⚠️ Only use npm for this
 npm run build
 
 # running in production
