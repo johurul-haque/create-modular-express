@@ -1,5 +1,5 @@
 # create-modular-express
-Lightweight project scaffolder for an express application configured with typescript.
+Scaffolder tool containing starter code for express configured with typescript, mongoose and zod.
 
 ## Getting started
 
@@ -32,13 +32,12 @@ npm start
 - **MongoDB** - Storing and managing data
 
 ## Features Overview
-- **Modular pattern** - The application adheres to the modular pattern. With each module having six necessary files. Use [this tool](https://www.npmjs.com/package/write-module) to quickly create those files.
+- **Modular pattern** - The application adheres to the modular pattern. With each module having six necessary files. Use [this tool](https://www.npmjs.com/package/write-module) to quickly generate those files.
   
-- **import alias** - Configured with import aliases `(@/*)` while ensuring the absolute paths get resolved to relative paths during build time.
-  
-- **AppError** - Extended class of the `Error` constructor for adding the status code parameter.
-- **Catch Async** - A utility function that wraps asynchronous route handlers—ensuring proper error handling by forwarding any errors to the Express error-handling middleware.
-- **Validate Request** - Validates incoming requests against a specified Zod schema for request bodies. If the validation succeeds, it allows the request to proceed; otherwise, it handles errors asynchronously.
-- **Global Catch** - Error handling middleware that catches all possible errors and sends a response with a standard format.
+- **import alias** - Pre-configured with import alias `(@/*)`. Also ensures the absolute paths get resolved to relative paths during build time.
+- **AppError** - Extended class of the `Error` instance for adding an extra status code parameter.
+- **catchAsync** - Utility function for wrapping asynchronous route handlers—ensuring proper error handling by forwarding any errors to the Express error-handling middleware.
+- **validateRequest** - Middleware function, expects any zod schema as arguments. Validates incoming requests against a specified Zod schema for request bodies. If the validation succeeds, it allows the request to proceed; otherwise, it handles errors asynchronously.
+- **globalCatch** - Error handling middleware that catches all possible errors and sends a response with a standard format.
 - **Deployment** - Comes with Vercel configuration to just easily deploy on Vercel using the CLI.
 - **Most importantly** - Delete what you don't need 🕶️
