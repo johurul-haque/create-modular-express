@@ -1,6 +1,6 @@
 import * as handle from '@helpers/handle-errors';
 import { AppError } from '@utils';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { ErrorResponse } from 'interface/errors';
 import mongoose from 'mongoose';
 import { ZodError } from 'zod';
@@ -23,8 +23,7 @@ export function globalCatch(
     | AppError
     | Error,
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) {
   if (error instanceof ZodError) {
     const zError = handle.zodError(error);

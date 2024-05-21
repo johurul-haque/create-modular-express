@@ -1,11 +1,11 @@
+import { env } from '@/config/env';
 import { ErrorResponse } from '@/interface/errors';
-import { env } from '@config';
 import { AppError } from '@utils';
 import mongoose from 'mongoose';
 import { ZodError } from 'zod';
 
 function getStack(stack: string | undefined) {
-  return env.isDevelopment ? stack : undefined;
+  return env.IS_DEV ? stack : undefined;
 }
 
 export function appError(error: AppError): ErrorResponse {
