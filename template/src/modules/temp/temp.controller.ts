@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
+import { sendResponse } from "@/utils/send-response";
 
 export function sendMessage(req: Request, res: Response) {
-  return res.status(200).json({
-    message: "Hello word!",
+  return sendResponse(res, {
+    message: "Hello world!",
   });
 }

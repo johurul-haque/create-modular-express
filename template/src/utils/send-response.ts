@@ -1,7 +1,7 @@
 import { Response } from "express";
 
 type opts<T> = {
-  status: number;
+  status?: number;
   success?: boolean;
   message: string;
   data?: T;
