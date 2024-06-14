@@ -1,14 +1,14 @@
-import * as handle from '@helpers/handle-errors';
-import { AppError } from '@utils';
-import { Request, Response, NextFunction } from 'express';
-import { ErrorResponse } from 'interface/errors';
-import mongoose from 'mongoose';
-import { ZodError } from 'zod';
+import * as handle from "@helpers/handle-errors";
+import { AppError } from "@utils";
+import { NextFunction, Request, Response } from "express";
+import { ErrorResponse } from "interface/errors";
+import mongoose from "mongoose";
+import { ZodError } from "zod";
 
 let errorResponse: ErrorResponse = {
   success: false,
   status: 500,
-  message: 'Internal server error',
+  message: "Internal server error",
   error: {
     sources: [],
     stack: undefined,
@@ -24,7 +24,7 @@ export function globalCatch(
     | Error,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   if (error instanceof ZodError) {
     const zError = handle.zodError(error);
@@ -38,7 +38,7 @@ export function globalCatch(
     const castError = handle.castError(error);
 
     errorResponse = { ...errorResponse, ...castError };
-  } else if ('code' in error && error.code === 11000) {
+  } else if ("code" in error && error.code === 11000) {
     const e11000 = handle.duplicateError(error);
 
     errorResponse = { ...errorResponse, ...e11000 };
@@ -46,7 +46,7 @@ export function globalCatch(
     const appError = handle.appError(error);
 
     errorResponse = { ...errorResponse, ...appError };
-  } else if (error instanceof Error) {
+  } else {
     const serverError = handle.serverError(error);
 
     errorResponse = {
